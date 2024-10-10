@@ -1,8 +1,10 @@
+.PHONY: install lint test
+
 install:
-   poetry install
+	poetry install
 
 lint:
-    poetry run flake8 python-project-50
+	poetry run flake8 .
 
 test:
-    poetry run pytest
+	poetry run pytest
