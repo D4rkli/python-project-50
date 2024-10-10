@@ -1,8 +1,8 @@
+install:
+   poetry install
+
 lint:
-    poetry run flake8 hexlet_code tests
+    poetry run flake8 python-project-50
 
 test:
     poetry run pytest
-
-install:
-   poetry install
