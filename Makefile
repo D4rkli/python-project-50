@@ -8,4 +8,4 @@ test:
 	poetry run pytest
 
 check:
-        lint test
+	lint test
