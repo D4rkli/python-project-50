@@ -1,5 +1,3 @@
-.PHONY: install lint test
-
 install:
 	poetry install
 
@@ -8,3 +6,6 @@ lint:
 
 test:
 	poetry run pytest
+
+check:
+        lint test
