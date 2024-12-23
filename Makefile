@@ -2,7 +2,7 @@ install:
 	poetry install
 
 lint:
-	poetry run flake8 hexlet_code
+	flake8 .
 
 test:
 	poetry run pytest
