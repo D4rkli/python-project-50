@@ -1,12 +1,9 @@
-import json
 from hexlet_code import generate_diff
 
 
 def test_gendiff():
-    with open('tests/test_data/file1.json') as f1:
-        file1_data = json.load(f1)
-    with open('tests/test_data/file2.json') as f2:
-        file2_data = json.load(f2)
+    file1_path = "tests/test_data/file1.json"
+    file2_path = "tests/test_data/file2.json"
 
     expected_output = '''{
   - follow: False
@@ -17,6 +14,6 @@ def test_gendiff():
   + verbose: True
 }'''
 
-    result = generate_diff("tests/test_data/file1.json", "tests/test_data/file2.json")
+    result = generate_diff(file1_path, file2_path)
 
     assert result.strip() == expected_output.strip()
