@@ -5,8 +5,6 @@ def test_generate_diff():
     file1_path = "tests/test_data/file1.json"
     file2_path = "tests/test_data/file2.json"
 
-
-
 expected = """{
   - follow: False
     host: hexlet.io
