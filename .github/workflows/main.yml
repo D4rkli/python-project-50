@@ -1,22 +1,44 @@
 name: Python CI
 
 on:
-  - push
-  - pull_request
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.12'
-        # make depends on uv
+          python-version: '3.10'
+
       - name: Install dependencies
         run: |
-          pip install uv
-      - name: Run linter and pytest
+          python -m pip install --upgrade pip
+          pip install uv pytest flake8 coverage
+
+      - name: Run linters
+        run: make lint
+
+      - name: Run tests with coverage
         run: |
-          make lint
+          coverage run -m pytest
+          coverage report
+          coverage xml
+
+      - name: Upload coverage to CodeClimate
+        run: |
+          bash <(curl -s https://codeclimate.com/test-reporter/env)
+          ./cc-test-reporter after-build --exit-code $?
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+
