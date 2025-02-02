@@ -9,6 +9,11 @@
 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/08e86bdf9665f47b8a87/test_coverage)](https://codeclimate.com/github/D4rkli/python-project-50/test_coverage)
 
+# gendiff
+
+## Usage example
+[![asciinema](https://asciinema.org/a/26BCDvX3tdp5uHoZazlEukeEy.svg)](https://asciinema.org/a/26BCDvX3tdp5uHoZazlEukeEy)
+
 # hexlet-code
 
 CLI утилита для сравнения кофигурационных файлов.

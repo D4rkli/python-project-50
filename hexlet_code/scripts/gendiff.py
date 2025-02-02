@@ -2,52 +2,52 @@ import argparse
 import json
 
 
-def read_json_file(file_path):
-    """Чтение и парсинг JSON-файла."""
-    with open(file_path, 'r') as file:
+def parse_json(filepath):
+    """Читает и парсит JSON-файл."""
+    with open(filepath, 'r', encoding='utf-8') as file:
         return json.load(file)
 
 
-def generate_diff(first_data, second_data):
-    """Сравнивает два словаря и возвращает разницу в виде строки."""
-    result = {}
+def generate_diff(file1, file2):
+    """Сравнивает два JSON-файла."""
+    data1 = parse_json(file1)
+    data2 = parse_json(file2)
 
-    all_keys = sorted(set(first_data.keys()).union(second_data.keys()))
+    all_keys = sorted(set(data1.keys()) | set(data2.keys()))
+    diff_lines = ["{"]
 
     for key in all_keys:
-        if key in first_data and key not in second_data:
-            result[key] = f"- {key}: {first_data[key]}"
-        elif key not in first_data and key in second_data:
-            result[key] = f"+ {key}: {second_data[key]}"
-        elif first_data[key] != second_data[key]:
-            result[key] = f"- {key}: {first_data[key]}"
-            result[key + "_new"] = f"+{key}: {second_data[key]}"
+        if key in data1 and key not in data2:
+            diff_lines.append(f"  - {key}: {data1[key]}")
+        elif key in data2 and key not in data1:
+            diff_lines.append(f"  + {key}: {data2[key]}")
+        elif data1[key] == data2[key]:
+            diff_lines.append(f"    {key}: {data1[key]}")
+        else:
+            diff_lines.append(f"  - {key}: {data1[key]}")
+            diff_lines.append(f"  + {key}: {data2[key]}")
 
-    return "{\n " + "\n ".join(result.values()) + "\n}"
+    diff_lines.append("}")
+    return "\n".join(diff_lines)
 
 
 def main():
     parser = argparse.ArgumentParser(
-        description='Compares two configuration files and shows a difference.'
+        description="Compares two configuration files and shows a difference."
     )
-
-    parser.add_argument('first_file', help='First configuration file')
-    parser.add_argument('second_file', help='Second configuration file')
-
+    parser.add_argument("first_file", help="First configuration file")
+    parser.add_argument("second_file", help="Second configuration file")
     parser.add_argument(
-        '-f', '--format',
-        help='set format of output',
-        default='plain'
+        "-f", "--format",
+        help="set format of output",
+        default="plain"
     )
 
     args = parser.parse_args()
 
-    first_data = read_json_file(args.first_file)
-    second_data = read_json_file(args.second_file)
-
-    diff = generate_diff(first_data, second_data)
-    print(diff)
+    result = generate_diff(args.first_file, args.second_file)
+    print(result)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -1,24 +1,21 @@
-[tool.poetry]
+[project]
 name = "hexlet-code"
 version = "0.1.0"
 description = "CLI утилита для сравнения конфигурационных файлов"
-authors = ["Your Name <you@example.com>"]
+authors = [{ name = "Anzhelika", email = "darkl11n3ss@gmail.com" }]
 readme = "README.md"
+dependencies = []
+requires-python = ">=3.10"
 
-[tool.poetry.dependencies]
-python = "^3.10"
+[tool.setuptools]
+packages = ["hexlet_code"]
 
-[tool.poetry.scripts]
+[tool.hatch.build.targets.wheel]
+packages = ["hexlet_code"]
+
+[project.scripts]
 gendiff = "hexlet_code.scripts.gendiff:main"
 
-[tool.poetry.group.dev.dependencies]
-flake8 = "^7.1.1"
-pytest = "^8.3.3"
-
-[tool.flake8]
-max-line-length = 88
-extend-ignore = ["E203", "W503"]
-
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
