@@ -10,6 +10,8 @@ def read_expected_result(filepath):
     ("tests/test_data/file1.yml", "tests/test_data/file2.yml", "tests/test_data/expected_output_stylish.txt", "stylish"),
     ("tests/test_data/nested_file1.json", "tests/test_data/nested_file2.json", "tests/test_data/expected_output_plain.txt", "plain"),
     ("tests/test_data/nested_file1.yml", "tests/test_data/nested_file2.yml", "tests/test_data/expected_output_plain.txt", "plain"),
+    ("tests/test_data/nested_file1.yml", "tests/test_data/nested_file2.yml", "tests/test_data/expected_output_plain.txt", "plain"),
+    ("tests/test_data/nested_file1.json", "tests/test_data/nested_file2.json", "tests/test_data/expected_output_json.txt", "json"),
 ])
 def test_generate_diff(file1, file2, expected_output, format_name):
     with open(expected_output, "r") as expected_file:

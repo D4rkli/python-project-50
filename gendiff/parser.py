@@ -1,8 +1,17 @@
 import json
 import yaml
+import os
+
+DEFAULT_PATH = "tests/test_data/"  # Папка по умолчанию
 
 def parse_file(filepath):
     """Определяет формат файла и парсит его."""
+    if not os.path.exists(filepath):
+        # Проверяем, существует ли файл в tests/test_data/
+        filepath = os.path.join(DEFAULT_PATH, filepath)
+        if not os.path.exists(filepath):
+            raise FileNotFoundError(f"Файл '{filepath}' не найден.")
+
     if filepath.endswith((".json", ".JSON")):
         with open(filepath, "r", encoding="utf-8") as file:
             return json.load(file)
@@ -10,4 +19,4 @@ def parse_file(filepath):
         with open(filepath, "r", encoding="utf-8") as file:
             return yaml.safe_load(file)
     else:
-        raise ValueError(f"Unsupported file format: {filepath}")
+        raise ValueError(f"Неподдерживаемый формат файла: {filepath}")
