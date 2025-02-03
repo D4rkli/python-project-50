@@ -12,7 +12,8 @@ def main():
         "-f", "--format",
         help="set format of output",
         metavar="FORMAT",
-        default="stylish"
+        default="stylish",
+        choices=["stylish", "plain"]
     )
 
     args = parser.parse_args()
