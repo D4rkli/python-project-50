@@ -35,6 +35,21 @@ jobs:
           coverage report
           coverage xml
 
+      - name: Install CodeClimate Test Reporter
+        run: |
+          curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 -o cc-test-reporter
+          chmod +x cc-test-reporter
+
+      - name: Run tests and collect coverage
+        run: |
+          ./cc-test-reporter before-build
+          coverage run -m pytest
+          coverage xml
+          ./cc-test-reporter after-build --exit-code $?
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+
+
       - name: Upload coverage to CodeClimate
         run: |
           bash <(curl -s https://codeclimate.com/test-reporter/env)
