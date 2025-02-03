@@ -1,3 +1,4 @@
+from hexlet_code.parsers import parse_file
 import argparse
 import json
 
@@ -10,13 +11,13 @@ def parse_json(filepath):
 
 def generate_diff(file1, file2):
     """Сравнивает два JSON-файла."""
-    data1 = parse_json(file1)
-    data2 = parse_json(file2)
+    data1 = parse_file(file1)
+    data2 = parse_file(file2)
 
-    all_keys = sorted(set(data1.keys()) | set(data2.keys()))
+    keys = sorted(data1.keys() | data2.keys())
     diff_lines = ["{"]
 
-    for key in all_keys:
+    for key in keys:
         if key in data1 and key not in data2:
             diff_lines.append(f"  - {key}: {data1[key]}")
         elif key in data2 and key not in data1:
