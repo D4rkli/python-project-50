@@ -9,8 +9,12 @@ description = "CLI tool for comparing configuration files"
 authors = [{ name = "Anzhelika", email = "darkl11n3ss@gmail.com" }]
 license = "MIT"
 
+dependencies = [
+    "pyyaml"
+]
+
 [project.scripts]
-gendiff = "gendiff.scripts.gendiff:main"
+gendiff = "gendiff.scripts.gendiff:main
 
 [tool.hatch.build.targets.wheel]
 packages = ["gendiff"]
