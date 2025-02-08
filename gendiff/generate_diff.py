@@ -1,8 +1,9 @@
+from gendiff.formatters.json import format_json
+from gendiff.formatters.plain import format_plain
+from gendiff.formatters.stylish import format_stylish
 from gendiff.parser import parse_file
 from gendiff.tree import build_diff
-from gendiff.formatters.stylish import format_stylish
-from gendiff.formatters.plain import format_plain
-from gendiff.formatters.json import format_json
+
 
 def generate_diff(file_path1, file_path2, format_name="stylish"):
     """Генерирует разницу между двумя конфигурационными файлами."""

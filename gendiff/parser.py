@@ -1,8 +1,10 @@
 import json
-import yaml
 import os
 
+import yaml
+
 DEFAULT_PATH = "tests/test_data/"
+
 
 def parse_file(filepath):
     """Определяет формат файла и парсит его."""
