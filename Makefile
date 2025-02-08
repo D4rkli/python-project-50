@@ -3,7 +3,6 @@
 setup:
 	uv venv
 	uv pip install --upgrade pip
-	uv pip install -r requirements.txt
 
 test:
 	uv pip install pytest
