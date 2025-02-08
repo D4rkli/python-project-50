@@ -1,17 +1,21 @@
-def format_value(value, depth):
-    """Форматирует значение с учетом вложенности."""
+def format_value(value, depth=1):
+    """Форматирует значение для корректного отображения в stylish-формате."""
+    indent = " " * (depth * 4)
+
+    if isinstance(value, bool):
+        return str(value).lower()
+    if value is None:
+        return "null"
     if isinstance(value, dict):
-        lines = []
-        indent = " " * (depth * 4)
-        for key, val in value.items():
-            lines.append(f"{indent}    {key}: {format_value(val, depth + 1)}")
-        return "{\n" + "\n".join(lines) + f"\n{indent}}}"
-    return str(value).lower() if isinstance(value, bool) else value
+        formatted_dict = "\n".join([f"{indent}{k}: {format_value(v, depth + 1)}" for k, v in value.items()])
+        return f"{{\n{formatted_dict}\n{indent}}}"
+    return str(value)
 
 
 def format_stylish(diff, depth=1):
     """Форматирует различия в виде дерева (stylish)."""
     indent = " " * (depth * 4 - 2)
+    closing_indent  =  " " * ((depth - 1) * 4)
     lines = ["{"]
 
     for node in diff:
