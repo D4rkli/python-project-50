@@ -3,7 +3,7 @@ import os
 
 import yaml
 
-DEFAULT_PATH = "tests/test_data/"
+DEFAULT_PATH = "tests/fixtures/"
 
 
 def parse_file(filepath):
