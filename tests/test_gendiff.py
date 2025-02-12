@@ -1,57 +1,52 @@
 import pytest
-
+from pathlib import Path
 from gendiff.generate_diff import generate_diff
 
 
-def read_expected_result(filepath):
+FIXTURES_DIR = Path(__file__).parent / "fixtures"
+
+def read_fixture(filepath):
     with open(filepath, "r", encoding="utf-8") as file:
-        return file.read().strip()
+        return file.read()
 
 
 @pytest.mark.parametrize(
-    "file1, file2, expected_output, format_name",
+    "file1, file2, fixture_file, format_name",
     [
         (
-            "tests/test_data/file1.json",
-            "tests/test_data/file2.json",
-            "tests/test_data/expected_output_stylish.txt",
+            FIXTURES_DIR / "file1.json",
+            FIXTURES_DIR / "file2.json",
+            FIXTURES_DIR / "expected_output_stylish.txt",
             "stylish",
         ),
         (
-            "tests/test_data/file1.yml",
-            "tests/test_data/file2.yml",
-            "tests/test_data/expected_output_stylish.txt",
+            FIXTURES_DIR / "file1.yml",
+            FIXTURES_DIR / "file2.yml",
+            FIXTURES_DIR / "expected_output_stylish.txt",
             "stylish",
         ),
         (
-            "tests/test_data/nested_file1.json",
-            "tests/test_data/nested_file2.json",
-            "tests/test_data/expected_output_plain.txt",
+            FIXTURES_DIR / "nested_file1.json",
+            FIXTURES_DIR / "nested_file2.json",
+            FIXTURES_DIR / "expected_output_plain.txt",
             "plain",
         ),
         (
-            "tests/test_data/nested_file1.yml",
-            "tests/test_data/nested_file2.yml",
-            "tests/test_data/expected_output_plain.txt",
+            FIXTURES_DIR / "nested_file1.yml",
+            FIXTURES_DIR / "nested_file2.yml",
+            FIXTURES_DIR / "expected_output_plain.txt",
             "plain",
         ),
         (
-            "tests/test_data/nested_file1.yml",
-            "tests/test_data/nested_file2.yml",
-            "tests/test_data/expected_output_plain.txt",
-            "plain",
-        ),
-        (
-            "tests/test_data/nested_file1.json",
-            "tests/test_data/nested_file2.json",
-            "tests/test_data/expected_output_json.txt",
+            FIXTURES_DIR / "nested_file1.json",
+            FIXTURES_DIR / "nested_file2.json",
+            FIXTURES_DIR / "expected_output_json.txt",
             "json",
         ),
     ],
 )
-def test_generate_diff(file1, file2, expected_output, format_name):
-    with open(expected_output, "r") as expected_file:
-        expected = expected_file.read().strip()
+def test_generate_diff(file1, file2, fixture_file, format_name):
+    result = generate_diff(str(file1), str(file2), format_name)
+    expected_output = read_fixture(fixture_file)
 
-    result = generate_diff(file1, file2, format_name)
-    assert result.strip() == expected
+    assert result == expected_output
