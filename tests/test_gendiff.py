@@ -46,7 +46,11 @@ def read_fixture(filepath):
     ],
 )
 def test_generate_diff(file1, file2, fixture_file, format_name):
-    result = generate_diff(str(file1), str(file2), format_name)
+    result = generate_diff(str(file1), str(file2), format_name) + "\n"
     expected_output = read_fixture(fixture_file)
+
+    if result != expected_output:
+        print("\n=== RESULT ===\n", repr(result))
+        print("\n=== EXPECTED ===\n", repr(expected_output))
 
     assert result == expected_output
