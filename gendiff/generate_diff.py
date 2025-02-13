@@ -12,11 +12,14 @@ def generate_diff(file_path1, file_path2, format_name="stylish"):
 
     diff = build_diff(data1, data2)
 
-    if format_name == "stylish":
-        return format_stylish(diff) + "\n"
-    elif format_name == "plain":
-        return format_plain(diff) + "\n"
-    elif format_name == "json":
-        return format_json(diff) + "\n"
-    else:
+    formatters = {
+        "stylish": format_stylish,
+        "plain": format_plain,
+        "json": format_json,
+    }
+
+    if format_name not in formatters:
         raise ValueError(f"Unsupported format: {format_name}")
+
+    result = formatters[format_name](diff)
+    return result + "\n"
