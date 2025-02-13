@@ -1,12 +1,16 @@
 .PHONY: test lint coverage check
 
-setup:
-	uv venv
-	uv pip install --upgrade pip
+install:
+	uv sync
+
+run:
+	uv run hexlet-python-package
 
 test:
-	uv pip install pytest
-	pytest
+	uv run pytest
+
+package-install:
+	uv tool install
 
 lint:
 	uv pip install flake8
