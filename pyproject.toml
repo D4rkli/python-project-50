@@ -4,7 +4,11 @@ version = "0.1.0"
 description = "CLI tool for comparing configuration files"
 authors = [{ name = "Anzhelika", email = "darkl11n3ss@gmail.com" }]
 license = { text = "MIT" }
-dependencies = ["pyyaml"]
+dependencies = [
+    "pyyaml",
+    "pytest",
+    "ruff"
+]
 
 [project.scripts]
 gendiff = "gendiff.scripts.gendiff:main"
