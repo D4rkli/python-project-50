@@ -2,6 +2,7 @@
 
 install:
 	uv sync
+	uv pip install --system
 
 run:
 	uv run hexlet-python-package

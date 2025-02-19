@@ -48,12 +48,4 @@ def read_fixture(filepath):
 def test_generate_diff(file1, file2, fixture_file, format_name):
     result = generate_diff(str(file1), str(file2), format_name)
     expected_output = read_fixture(fixture_file)
-
-if result != expected_output:
-        print("\n=== DIFFERENCE ===\n")
-        diff = difflib.unified_diff(
-            expected_output.splitlines(), result.splitlines(), lineterm=""
-        )
-        print("\n".join(diff))
-
-assert result == expected_output
+    assert result == expected_output
