@@ -23,6 +23,9 @@ def format_stylish(diff, depth=0):
 
 def format_value(value, depth):
     """Форматирование значений с правильными булевыми значениями."""
+    if value is None:
+        return "null"
+
     if isinstance(value, bool):
         return "true" if value else "false"
 
