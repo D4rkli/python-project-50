@@ -43,6 +43,12 @@ def read_fixture(filepath):
             FIXTURES_DIR / "expected_output_json.txt",
             "json",
         ),
+        (
+            FIXTURES_DIR / "nested_file1.json",
+            FIXTURES_DIR / "nested_file2.json",
+            FIXTURES_DIR / "expected_nested_diff.txt",
+            "stylish",
+        ),
     ],
 )
 def test_generate_diff(file1, file2, fixture_file, format_name):
