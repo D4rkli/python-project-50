@@ -6,7 +6,7 @@ install:
 
 setup:
 	uv venv
-	uv pip sync
+	uv pip sync pyproject.toml
 run:
 	uv run hexlet-python-package
 

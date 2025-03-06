@@ -1,5 +1,4 @@
 def format_value(value):
-    """Форматирует значение для вывода в plain-формате."""
     if isinstance(value, dict):
         return "[complex value]"
     if isinstance(value, bool):
@@ -12,7 +11,6 @@ def format_value(value):
 
 
 def format_plain(diff, path=""):
-    """Форматирует различия в plain-формате."""
     lines = []
 
     for node in diff:
@@ -36,7 +34,6 @@ def format_plain(diff, path=""):
     return "\n".join(lines)
 
 def format_plain_value(value):
-    """Форматирует значение для plain-формата."""
     if isinstance(value, bool):
         return str(value).lower()
     if value is None:

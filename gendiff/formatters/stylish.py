@@ -1,5 +1,4 @@
 def format_stylish(diff, depth=0):
-    """Форматирование `diff` в `stylish` стиль с правильными отступами."""
     indent = " " * (depth * 4)  # Правильный базовый отступ
     result = ["{"]
 
@@ -22,7 +21,6 @@ def format_stylish(diff, depth=0):
 
 
 def format_value(value, depth):
-    """Форматирование значений с правильными булевыми значениями."""
     if value is None:
         return "null"
 
