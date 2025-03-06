@@ -4,6 +4,9 @@ install:
 	uv sync
 	uv pip install --system
 
+setup:
+	uv venv
+	uv pip install
 run:
 	uv run hexlet-python-package
 
