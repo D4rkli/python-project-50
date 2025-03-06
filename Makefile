@@ -6,7 +6,7 @@ install:
 
 setup:
 	uv venv
-	uv pip install
+	uv pip sync
 run:
 	uv run hexlet-python-package
 
