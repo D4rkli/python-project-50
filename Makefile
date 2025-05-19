@@ -7,7 +7,7 @@ install:
 setup:
 	uv venv
 	uv pip sync pyproject.toml
-	uv pip install flake8
+	uv pip install flake8 coverage
 run:
 	uv run hexlet-python-package
 
