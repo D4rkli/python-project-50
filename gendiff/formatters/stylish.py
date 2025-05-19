@@ -41,4 +41,4 @@ def format_value(value, depth):
         formatted.append(" " * (depth * 4) + "}")
         return "\n".join(formatted)
 
-    return value if isinstance(value, str) else str(value) 
+    return value if isinstance(value, str) else str(value)
