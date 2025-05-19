@@ -3,6 +3,7 @@
 install:
 	uv sync
 	uv pip install --system
+	uv pip install flake8
 
 setup:
 	uv venv
