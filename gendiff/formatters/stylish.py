@@ -8,19 +8,19 @@ def format_stylish(diff, depth=0):
             result.append(f"{indent}    {key}: "
                           f"{format_stylish(node['children'], depth + 1)}")
         elif node["type"] == "added":
-            result.append(f"{indent}  + {key}: {format_value(node['value'],
-                                                             depth + 1)}")
+            result.append(f"{indent}  + {key}: "
+                          f"{format_value(node['value'], depth + 1)}")
         elif node["type"] == "removed":
-            result.append(f"{indent}  - {key}: {format_value(node['value'],
-                                                             depth + 1)}")
+            result.append(f"{indent}  - {key}: "
+                          f"{format_value(node['value'], depth + 1)}")
         elif node["type"] == "changed":
-            result.append(f"{indent}  - {key}: {format_value(node['old_value'],
-                                                             depth + 1)}")
-            result.append(f"{indent}  + {key}: {format_value(node['new_value'],
-                                                             depth + 1)}")
+            result.append(f"{indent}  - {key}: "
+                          f"{format_value(node['old_value'], depth + 1)}")
+            result.append(f"{indent}  + {key}: "
+                          f"{format_value(node['new_value'],depth + 1)}")
         else:
-            result.append(f"{indent}    {key}: {format_value(node['value'],
-                                                             depth + 1)}")
+            result.append(f"{indent}    {key}: "
+                          f"{format_value(node['value'], depth + 1)}")
 
     result.append(indent + "}")
     return "\n".join(result)
