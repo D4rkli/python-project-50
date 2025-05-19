@@ -22,4 +22,4 @@ def generate_diff(file_path1, file_path2, format_name="stylish"):
         raise ValueError(f"Unsupported format: {format_name}")
 
     result = formatters[format_name](diff)
-    return result + "\n"
+    return result

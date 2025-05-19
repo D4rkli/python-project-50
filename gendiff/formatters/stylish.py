@@ -1,5 +1,5 @@
 def format_stylish(diff, depth=0):
-    indent = " " * (depth * 4)  # Правильный базовый отступ
+    indent = " " * (depth * 4)
     result = ["{"]
 
     for node in diff:
