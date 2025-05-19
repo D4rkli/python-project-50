@@ -26,7 +26,8 @@ def format_plain(diff, path=""):
             old_value = format_plain_value(node["old_value"])
             new_value = format_plain_value(node["new_value"])
             lines.append(
-                f"Property '{key}' was updated. From {old_value} to {new_value}"
+                f"Property '{key}' was updated. "
+                f"From {old_value} to {new_value}"
             )
         elif node_type == "nested":
             lines.append(format_plain(node["children"], f"{key}."))

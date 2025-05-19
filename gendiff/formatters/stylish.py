@@ -5,8 +5,8 @@ def format_stylish(diff, depth=0):
     for node in diff:
         key = node["key"]
         if node["type"] == "nested":
-            result.append(f"{indent}    {key}: {format_stylish(node['children'],
-                                                               depth + 1)}")
+            result.append(f"{indent}    {key}: "
+                          f"{format_stylish(node['children'], depth + 1)}")
         elif node["type"] == "added":
             result.append(f"{indent}  + {key}: {format_value(node['value'],
                                                              depth + 1)}")
