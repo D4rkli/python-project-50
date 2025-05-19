@@ -17,8 +17,7 @@ package-install:
 	uv tool install
 
 lint:
-	uv pip install flake8
-	flake8 gendiff tests\
+	uv pip install flake8 gendiff tests
 
 coverage:
 	uv pip install pytest pytest-cov
