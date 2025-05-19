@@ -17,10 +17,10 @@ package-install:
 	uv tool install
 
 lint:
-	uv pip install flake8 gendiff tests
+	uv run flake8 gendiff tests
 
 coverage:
-	uv pip install pytest pytest-cov
-	pytest --cov=gendiff --cov-report=xml
+	uv run coverage run -m pytest
+	uv run coverage report
 
 check: lint test coverage
