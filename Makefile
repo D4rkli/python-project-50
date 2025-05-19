@@ -3,11 +3,11 @@
 install:
 	uv sync
 	uv pip install --system
-	uv pip install flake8
 
 setup:
 	uv venv
 	uv pip sync pyproject.toml
+	uv pip install flake8
 run:
 	uv run hexlet-python-package
 
