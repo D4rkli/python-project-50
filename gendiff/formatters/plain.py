@@ -33,6 +33,7 @@ def format_plain(diff, path=""):
 
     return "\n".join(lines)
 
+
 def format_plain_value(value):
     if isinstance(value, bool):
         return str(value).lower()

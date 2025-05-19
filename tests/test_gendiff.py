@@ -5,6 +5,7 @@ from gendiff.generate_diff import generate_diff
 
 FIXTURES_DIR = Path(__file__).parent / "fixtures"
 
+
 def read_fixture(filepath):
     with open(filepath, "r", encoding="utf-8") as file:
         return file.read()
