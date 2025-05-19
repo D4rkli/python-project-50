@@ -17,7 +17,7 @@ def format_stylish(diff, depth=0):
             result.append(f"{indent}  - {key}: "
                           f"{format_value(node['old_value'], depth + 1)}")
             result.append(f"{indent}  + {key}: "
-                          f"{format_value(node['new_value'],depth + 1)}")
+                          f"{format_value(node['new_value'], depth + 1)}")
         else:
             result.append(f"{indent}    {key}: "
                           f"{format_value(node['value'], depth + 1)}")
