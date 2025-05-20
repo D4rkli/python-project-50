@@ -12,7 +12,7 @@ def read_file(filepath):
         return file.read()
 
 
-def parse_content(content:str, filepath:str):
+def parse_content(content: str, filepath: str):
     if filepath.endswith((".json", ".JSON")):
         return json.loads(content)
     elif filepath.endswith((".yml", ".yaml", ".YML", ".YAML")):
