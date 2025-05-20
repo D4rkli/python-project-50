@@ -8,17 +8,17 @@
 
 [![Test Coverage](https://api.codeclimate.com/v1/badges/08e86bdf9665f47b8a87/test_coverage)](https://codeclimate.com/github/D4rkli/python-project-50/test_coverage)
 
-# gendiff
+## Описнаие
+
+**Gendiff** - это консольная утилита, которая определяет разницу между двумя конфигурационными файлами.
+Поддерживает форматы **JSON** и **YAML**, в том числе **вложенные структуры**.
 
 ## Usage example
 [![asciinema](https://asciinema.org/a/26BCDvX3tdp5uHoZazlEukeEy.svg)](https://asciinema.org/a/26BCDvX3tdp5uHoZazlEukeEy)
 
-# hexlet-code
-
-CLI утилита для сравнения кофигурационных файлов.
-
 ## Установка
 
 ```bash
-poetry install
-
+git clone https://github.com/D4rkli/python-project-50.git
+cd python-project-50
+make setup
