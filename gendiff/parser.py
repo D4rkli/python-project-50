@@ -6,7 +6,7 @@ import yaml
 def parse_file(filepath):
     """Определяет формат файла и парсит его."""
     if not os.path.exists(filepath):
-            raise FileNotFoundError(f"Файл '{filepath}' не найден.")
+        raise FileNotFoundError(f"Файл '{filepath}' не найден.")
 
     if filepath.endswith((".json", ".JSON")):
         with open(filepath, "r", encoding="utf-8") as file:
