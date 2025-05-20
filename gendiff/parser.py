@@ -1,17 +1,11 @@
 import json
 import os
-
 import yaml
-
-DEFAULT_PATH = "tests/fixtures/"
 
 
 def parse_file(filepath):
     """Определяет формат файла и парсит его."""
     if not os.path.exists(filepath):
-
-        filepath = os.path.join(DEFAULT_PATH, filepath)
-        if not os.path.exists(filepath):
             raise FileNotFoundError(f"Файл '{filepath}' не найден.")
 
     if filepath.endswith((".json", ".JSON")):

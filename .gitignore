@@ -18,10 +18,12 @@ logs/
 *.lock
 .DS_Store
 
+coverage.xml
 .coverage
 htmlcov/
 .cache/
 pytest_cache/
+actual_output.json
 
 build/
 dist/
