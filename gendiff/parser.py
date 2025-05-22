@@ -1,26 +1,34 @@
+from pathlib import Path
 import json
 import os
 import yaml
 
 
-def read_file(filepath):
-    """Определяет формат файла и парсит его."""
+def get_filetype(filepath: str) -> str:
+    ext = Path(filepath).suffix.lower()
+    if ext == ".json":
+        return "json"
+    if ext in (".yml", ".yaml"):
+        return "yaml"
+    raise ValueError(f"Неизвестное расширение файла: {filepath}")
+
+
+def parse_content(content: str, filetype: str):
+    if filetype == "json":
+        return json.loads(content)
+    elif filetype == "yaml":
+        return yaml.safe_load(content)
+    else:
+        raise ValueError(f"Неподдерживаемый формат файла: {filetype}")
+
+
+def parse_file(filepath: str):
     if not os.path.exists(filepath):
         raise FileNotFoundError(f"Файл '{filepath}' не найден.")
 
+    filetype = get_filetype(filepath)
+
     with open(filepath, "r", encoding="utf-8") as file:
-        return file.read()
+        content = file.read()
 
-
-def parse_content(content: str, filepath: str):
-    if filepath.endswith((".json", ".JSON")):
-        return json.loads(content)
-    elif filepath.endswith((".yml", ".yaml", ".YML", ".YAML")):
-        return yaml.safe_load(content)
-    else:
-        raise ValueError(f"Неподдерживаемый формат файла: {filepath}")
-
-
-def parse_file(filepath):
-    content = read_file(filepath)
     return parse_content(content, filepath)

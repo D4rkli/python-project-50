@@ -3,7 +3,11 @@ from pathlib import Path
 from gendiff.generate_diff import generate_diff
 
 
-FIXTURES_DIR = Path(__file__).parent / "fixtures"
+FIXTURES_DIR = Path("tests/fixtures")
+
+
+def fixture_path(name: str) -> Path:
+    return FIXTURES_DIR / name
 
 
 def read_fixture(filepath):
@@ -15,40 +19,40 @@ def read_fixture(filepath):
     "file1, file2, fixture_file, format_name",
     [
         (
-            FIXTURES_DIR / "file1.json",
-            FIXTURES_DIR / "file2.json",
-            FIXTURES_DIR / "expected_output_stylish.txt",
-            "stylish",
+                fixture_path("file1.json"),
+                fixture_path("file2.json"),
+                fixture_path("expected_output_stylish.txt"),
+                "stylish",
         ),
         (
-            FIXTURES_DIR / "file1.yml",
-            FIXTURES_DIR / "file2.yml",
-            FIXTURES_DIR / "expected_output_stylish.txt",
-            "stylish",
+                fixture_path("file1.yml"),
+                fixture_path("file2.yml"),
+                fixture_path("expected_output_stylish.txt"),
+                "stylish",
         ),
         (
-            FIXTURES_DIR / "nested_file1.json",
-            FIXTURES_DIR / "nested_file2.json",
-            FIXTURES_DIR / "expected_output_plain.txt",
-            "plain",
+                fixture_path("nested_file1.json"),
+                fixture_path("nested_file2.json"),
+                fixture_path("expected_output_plain.txt"),
+                "plain",
         ),
         (
-            FIXTURES_DIR / "nested_file1.yml",
-            FIXTURES_DIR / "nested_file2.yml",
-            FIXTURES_DIR / "expected_output_plain.txt",
-            "plain",
+                fixture_path("nested_file1.yml"),
+                fixture_path("nested_file2.yml"),
+                fixture_path("expected_output_plain.txt"),
+                "plain",
         ),
         (
-            FIXTURES_DIR / "nested_file1.json",
-            FIXTURES_DIR / "nested_file2.json",
-            FIXTURES_DIR / "expected_output_json.txt",
-            "json",
+                fixture_path("nested_file1.json"),
+                fixture_path("nested_file2.json"),
+                fixture_path("expected_output_json.txt"),
+                "json",
         ),
         (
-            FIXTURES_DIR / "nested_file1.json",
-            FIXTURES_DIR / "nested_file2.json",
-            FIXTURES_DIR / "expected_nested_diff.txt",
-            "stylish",
+                fixture_path("nested_file1.json"),
+                fixture_path("nested_file2.json"),
+                fixture_path("expected_nested_diff.txt"),
+                "stylish",
         ),
     ],
 )
