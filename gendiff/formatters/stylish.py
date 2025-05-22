@@ -26,6 +26,9 @@ def format_stylish(diff, depth=0):
     return "\n".join(result)
 
 
+INDENT_SIZE = 4
+
+
 def to_str(value, depth):
     if value is None:
         return "null"
@@ -34,7 +37,7 @@ def to_str(value, depth):
         return str(value).lower()
 
     if isinstance(value, dict):
-        indent = " " * ((depth + 1) * 4)
+        indent = " " * ((depth + 1) * INDENT_SIZE)
         formatted = ["{"]
         for k, v in value.items():
             formatted.append(f"{indent}{k}: {to_str(v, depth + 1)}")

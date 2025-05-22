@@ -1,4 +1,4 @@
-def format_value(value):
+def format_value(value, mode="plain"):
     if isinstance(value, dict):
         return "[complex value]"
     if isinstance(value, bool):
@@ -6,7 +6,7 @@ def format_value(value):
     if value is None:
         return "null"
     if isinstance(value, str):
-        return f"'{value}'"
+        return f"'{value}'" if mode == "plain" else f"'{value}'"
     return value
 
 
@@ -20,11 +20,11 @@ def format_plain(diff, path=""):
         if node_type == "removed":
             lines.append(f"Property '{key}' was removed")
         elif node_type == "added":
-            value = format_plain_value(node["value"])
+            value = format_plain(node["value"])
             lines.append(f"Property '{key}' was added with value: {value}")
         elif node_type == "changed":
-            old_value = format_plain_value(node["old_value"])
-            new_value = format_plain_value(node["new_value"])
+            old_value = format_plain(node["old_value"])
+            new_value = format_plain(node["new_value"])
             lines.append(
                 f"Property '{key}' was updated. "
                 f"From {old_value} to {new_value}"
@@ -34,14 +34,3 @@ def format_plain(diff, path=""):
 
     return "\n".join(lines)
 
-
-def format_plain_value(value):
-    if isinstance(value, bool):
-        return str(value).lower()
-    if value is None:
-        return "null"
-    if isinstance(value, dict):
-        return "[complex value]"
-    if isinstance(value, str):
-        return f"'{value}'"
-    return value
