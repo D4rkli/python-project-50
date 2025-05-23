@@ -1,5 +1,3 @@
-from subcmds.diff import Diff
-
 from gendiff.formatters import get_formatter
 from gendiff.parser import parse_file
 from gendiff.tree import build_diff
