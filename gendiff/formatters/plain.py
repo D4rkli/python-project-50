@@ -33,4 +33,3 @@ def format_plain(diff, path=""):
             lines.append(format_plain(node["children"], f"{key}."))
 
     return "\n".join(lines)
-
