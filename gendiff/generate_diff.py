@@ -11,7 +11,8 @@ def generate_diff(file_path1, file_path2, format_name="stylish"):
     diff = build_diff(data1, data2)
 
     if not isinstance(diff, list):
-        raise TypeError(f"build_diff() должен возвращать список, а не {type(diff)}")
+        raise TypeError(f"build_diff() должен возвращать список,"
+                        f" а не {type(diff)}")
 
     formatter = get_formatter(format_name)
     return formatter(diff)
