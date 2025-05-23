@@ -20,11 +20,11 @@ def format_plain(diff, path=""):
         if node_type == "removed":
             lines.append(f"Property '{key}' was removed")
         elif node_type == "added":
-            value = format_plain(node["value"])
+            value = format_value(node["value"], mode="plain")
             lines.append(f"Property '{key}' was added with value: {value}")
         elif node_type == "changed":
-            old_value = format_plain(node["old_value"])
-            new_value = format_plain(node["new_value"])
+            old_value = format_value(node["old_value"], mode="plain")
+            new_value = format_value(node["new_value"], mode="plain")
             lines.append(
                 f"Property '{key}' was updated. "
                 f"From {old_value} to {new_value}"
