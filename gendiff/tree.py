@@ -1,5 +1,8 @@
 def build_diff(data1, data2):
     """Построение дерева различий между двумя структурами данных."""
+    if not isinstance(data1, dict) or not isinstance(data2, dict):
+        return []
+
     all_keys = sorted(set(data1.keys()) | set(data2.keys()))
     diff = []
 
