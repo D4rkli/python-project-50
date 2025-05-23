@@ -1,3 +1,5 @@
+from subcmds.diff import Diff
+
 from gendiff.formatters import get_formatter
 from gendiff.parser import parse_file
 from gendiff.tree import build_diff
@@ -9,6 +11,9 @@ def generate_diff(file_path1, file_path2, format_name="stylish"):
     data2 = parse_file(file_path2)
 
     diff = build_diff(data1, data2)
-    formatter = get_formatter(format_name)
 
+    if not isinstance(diff, list):
+        raise TypeError(f"build_diff() должен возвращать список, а не {type(diff)}")
+
+    formatter = get_formatter(format_name)
     return formatter(diff)
