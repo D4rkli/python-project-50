@@ -6,7 +6,8 @@ import yaml
 
 def get_filetype(filepath: str) -> str:
     ext = Path(filepath).suffix.lower()
-    if ext == ".json":
+
+    if ext == (".json",):
         return "json"
     if ext in (".yml", ".yaml"):
         return "yaml"
