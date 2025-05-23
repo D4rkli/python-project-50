@@ -31,4 +31,4 @@ def parse_file(filepath: str):
     with open(filepath, "r", encoding="utf-8") as file:
         content = file.read()
 
-    return parse_content(content, filepath)
+    return parse_content(content, filetype)
