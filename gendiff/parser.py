@@ -4,7 +4,7 @@ import os
 import yaml
 
 
-def get_filetype(filepath: str) -> str:
+def get_file_extension(filepath: str) -> str:
     ext = Path(filepath).suffix.lower()
 
     if ext == ".json":
@@ -27,7 +27,7 @@ def parse_file(filepath: str):
     if not os.path.exists(filepath):
         raise FileNotFoundError(f"Файл '{filepath}' не найден.")
 
-    filetype = get_filetype(filepath)
+    filetype = get_file_extension(filepath)
 
     with open(filepath, "r", encoding="utf-8") as file:
         content = file.read()

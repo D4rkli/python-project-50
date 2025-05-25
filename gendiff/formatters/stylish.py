@@ -1,3 +1,6 @@
+INDENT_SIZE = 4
+
+
 def format_stylish(diff, depth=0):
     indent = " " * (depth * 4)
     result = ["{"]
@@ -24,9 +27,6 @@ def format_stylish(diff, depth=0):
 
     result.append(indent + "}")
     return "\n".join(result)
-
-
-INDENT_SIZE = 4
 
 
 def to_str(value, depth):

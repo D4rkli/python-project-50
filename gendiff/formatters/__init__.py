@@ -6,7 +6,7 @@ from gendiff.formatters.json import format_json
 __all__ = ['json', 'plain', 'stylish']
 
 
-def get_formatter(format_name):
+def apply_formatter(diff, format_name):
     formatters = {
         "stylish": format_stylish,
         "plain": format_plain,
@@ -16,4 +16,4 @@ def get_formatter(format_name):
     if format_name not in formatters:
         raise ValueError(f"Unsupported format: {format_name}")
 
-    return formatters[format_name]
+    return formatters[format_name](diff)

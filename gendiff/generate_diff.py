@@ -1,4 +1,4 @@
-from gendiff.formatters import get_formatter
+from gendiff.formatters import get_formatter, apply_formatter
 from gendiff.parser import parse_file
 from gendiff.tree import build_diff
 
@@ -14,5 +14,4 @@ def generate_diff(file_path1, file_path2, format_name="stylish"):
         raise TypeError(f"build_diff() должен возвращать список,"
                         f" а не {type(diff)}")
 
-    formatter = get_formatter(format_name)
-    return formatter(diff)
+    return apply_formatter(diff, format_name)
