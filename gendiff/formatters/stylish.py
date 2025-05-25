@@ -6,7 +6,7 @@ def make_indent(depth: int, shift: int = 0) -> str:
 
 
 def format_stylish(diff, depth=0):
-    indent = make_indent(depth, shift=1)
+    indent = make_indent(depth)
     result = ["{"]
 
     for node in diff:
