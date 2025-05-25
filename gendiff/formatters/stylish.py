@@ -1,8 +1,11 @@
 INDENT_SIZE = 4
 
 
+def make_indent(depth: int, shift: int = 0) -> str:
+    return " " * ((depth + shift) * INDENT_SIZE)
+
 def format_stylish(diff, depth=0):
-    indent = " " * (depth * 4)
+    indent = make_indent(depth, shift=1)
     result = ["{"]
 
     for node in diff:
@@ -37,11 +40,11 @@ def to_str(value, depth):
         return str(value).lower()
 
     if isinstance(value, dict):
-        indent = " " * ((depth + 1) * INDENT_SIZE)
+        indent = make_indent(depth, shift=1)
         formatted = ["{"]
         for k, v in value.items():
             formatted.append(f"{indent}{k}: {to_str(v, depth + 1)}")
-        formatted.append(" " * (depth * 4) + "}")
+        formatted.append(make_indent(depth) + "}")
         return "\n".join(formatted)
 
     return value if isinstance(value, str) else str(value)

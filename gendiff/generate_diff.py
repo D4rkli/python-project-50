@@ -1,4 +1,4 @@
-from gendiff.formatters import get_formatter, apply_formatter
+from gendiff.formatters import apply_formatter
 from gendiff.parser import parse_file
 from gendiff.tree import build_diff
 
