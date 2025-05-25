@@ -4,6 +4,7 @@ INDENT_SIZE = 4
 def make_indent(depth: int, shift: int = 0) -> str:
     return " " * ((depth + shift) * INDENT_SIZE)
 
+
 def format_stylish(diff, depth=0):
     indent = make_indent(depth, shift=1)
     result = ["{"]

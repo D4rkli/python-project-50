@@ -1,5 +1,4 @@
 from gendiff.constants import (
-    TYPE, KEY, VALUE, OLD_VALUE, NEW_VALUE, CHILDREN,
     TYPE_REMOVED, TYPE_ADDED, TYPE_CHANGED, TYPE_NESTED
 )
 
