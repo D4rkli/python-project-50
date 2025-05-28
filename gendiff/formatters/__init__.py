@@ -5,7 +5,7 @@ from gendiff.formatters.stylish import format_stylish
 from gendiff.formatters.plain import format_plain
 from gendiff.formatters.json import format_json
 
-__all__ = ['json', 'plain', 'stylish', 'apply_formatter']
+__all__ = [FORMAT_JSON, FORMAT_PLAIN, FORMAT_STYLISH, 'apply_formatter']
 
 
 def apply_formatter(diff, format_name):
