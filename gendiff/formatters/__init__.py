@@ -1,4 +1,6 @@
-from gendiff.formatters import json, plain, stylish
+from gendiff.constants import (
+    FORMAT_STYLISH, FORMAT_PLAIN, FORMAT_JSON
+)
 from gendiff.formatters.stylish import format_stylish
 from gendiff.formatters.plain import format_plain
 from gendiff.formatters.json import format_json
@@ -8,9 +10,9 @@ __all__ = ['json', 'plain', 'stylish', 'apply_formatter']
 
 def apply_formatter(diff, format_name):
     formatters = {
-        "stylish": format_stylish,
-        "plain": format_plain,
-        "json": format_json,
+        FORMAT_STYLISH: format_stylish,
+        FORMAT_PLAIN: format_plain,
+        FORMAT_JSON: format_json,
     }
 
     if format_name not in formatters:

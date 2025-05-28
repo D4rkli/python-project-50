@@ -1,4 +1,4 @@
-INDENT_SIZE = 4
+from gendiff.constants import INDENT_SIZE
 
 
 def make_indent(depth: int, shift: int = 0) -> str:
