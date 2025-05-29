@@ -1,5 +1,8 @@
-from gendiff.constants import INDENT_SIZE
-
+from gendiff.constants import (
+    INDENT_SIZE,
+    TYPE, TYPE_ADDED, TYPE_CHANGED, TYPE_NESTED, TYPE_REMOVED,
+    KEY, VALUE, OLD_VALUE, NEW_VALUE, CHILDREN
+)
 
 def make_indent(depth: int, shift: int = 0) -> str:
     return " " * ((depth + shift) * INDENT_SIZE)
@@ -10,24 +13,24 @@ def format_stylish(diff, depth=0):
     result = ["{"]
 
     for node in diff:
-        key = node["key"]
-        if node["type"] == "nested":
+        key = node[KEY]
+        if node["type"] == TYPE_NESTED:
             result.append(f"{indent}    {key}: "
-                          f"{format_stylish(node['children'], depth + 1)}")
-        elif node["type"] == "added":
+                          f"{format_stylish(node[CHILDREN], depth + 1)}")
+        elif node["type"] == TYPE_CHANGED:
             result.append(f"{indent}  + {key}: "
-                          f"{to_str(node['value'], depth + 1)}")
-        elif node["type"] == "removed":
+                          f"{to_str(node[VALUE], depth + 1)}")
+        elif node["type"] == TYPE_REMOVED:
             result.append(f"{indent}  - {key}: "
-                          f"{to_str(node['value'], depth + 1)}")
-        elif node["type"] == "changed":
+                          f"{to_str(node[VALUE], depth + 1)}")
+        elif node["type"] == TYPE_ADDED:
             result.append(f"{indent}  - {key}: "
-                          f"{to_str(node['old_value'], depth + 1)}")
+                          f"{to_str(node[OLD_VALUE], depth + 1)}")
             result.append(f"{indent}  + {key}: "
-                          f"{to_str(node['new_value'], depth + 1)}")
+                          f"{to_str(node[NEW_VALUE], depth + 1)}")
         else:
             result.append(f"{indent}    {key}: "
-                          f"{to_str(node['value'], depth + 1)}")
+                          f"{to_str(node[VALUE], depth + 1)}")
 
     result.append(indent + "}")
     return "\n".join(result)
