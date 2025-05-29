@@ -14,16 +14,16 @@ def format_stylish(diff, depth=0):
 
     for node in diff:
         key = node[KEY]
-        if node["type"] == TYPE_NESTED:
+        if node[TYPE] == TYPE_NESTED:
             result.append(f"{indent}    {key}: "
                           f"{format_stylish(node[CHILDREN], depth + 1)}")
-        elif node["type"] == TYPE_CHANGED:
+        elif node[TYPE] == TYPE_CHANGED:
             result.append(f"{indent}  + {key}: "
                           f"{to_str(node[VALUE], depth + 1)}")
-        elif node["type"] == TYPE_REMOVED:
+        elif node[TYPE] == TYPE_REMOVED:
             result.append(f"{indent}  - {key}: "
                           f"{to_str(node[VALUE], depth + 1)}")
-        elif node["type"] == TYPE_ADDED:
+        elif node[TYPE] == TYPE_ADDED:
             result.append(f"{indent}  - {key}: "
                           f"{to_str(node[OLD_VALUE], depth + 1)}")
             result.append(f"{indent}  + {key}: "
