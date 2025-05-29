@@ -1,7 +1,7 @@
 from gendiff.constants import (
     INDENT_SIZE,
     TYPE, TYPE_ADDED, TYPE_CHANGED, TYPE_NESTED, TYPE_REMOVED,
-    KEY, VALUE, NEW_VALUE, CHILDREN
+    KEY, VALUE,OLD_VALUE, NEW_VALUE, CHILDREN
 )
 
 def make_indent(depth: int, shift: int = 0) -> str:
@@ -18,8 +18,10 @@ def format_stylish(diff, depth=0):
             result.append(f"{indent}    {key}: "
                           f"{format_stylish(node[CHILDREN], depth + 1)}")
         elif node[TYPE] == TYPE_CHANGED:
+            result.append(f"{indent}  - {key}: "
+                          f"{to_str(node[OLD_VALUE], depth + 1)}")
             result.append(f"{indent}  + {key}: "
-                          f"{to_str(node[VALUE], depth + 1)}")
+                          f"{to_str(node[NEW_VALUE], depth + 1)}")
         elif node[TYPE] == TYPE_REMOVED:
             result.append(f"{indent}  - {key}: "
                           f"{to_str(node[VALUE], depth + 1)}")
